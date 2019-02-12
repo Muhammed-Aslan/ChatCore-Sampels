@@ -1,0 +1,16 @@
+<mat-nav-list class="nvlist">
+    <mat-list-item *ngFor="let contact of contacts" (click)="chatWith(contact.id)">
+      <span mat-list-avatar class="avatar status {{getUserStatus(contact)}}">
+        <img src="../../../assets/images/shiba2.jpg" alt="...">
+
+      </span>
+      <h3 mat-line> {{contact.userName}}</h3>
+
+      <p mat-line>
+        <span>{{contact.statusMessage}}</span>
+      </p>
+
+    </mat-list-item>
+
+  <div>last one</div>
+</mat-nav-list>

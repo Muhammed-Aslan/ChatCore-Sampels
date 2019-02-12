@@ -1,0 +1,30 @@
+/deep/.mat-dialog-container {
+    // position: absolute!important;
+    // width: 50%!important;
+    // height: 50%!important;
+    // padding: 24px;
+    // border-radius: 4px;
+    // outline: 0;
+    // display: block;
+    // box-sizing: border-box;
+    // overflow: auto;
+    // min-height: inherit;
+    // max-height: inherit;
+
+    min-width: 400px;
+}
+.my-dialog-header{
+    display: flex;
+    h5{
+        margin:0;
+    }
+    button{
+        margin-top: -5px;
+    }
+}
+mat-form-field{
+    width: 100%;
+}
+mat-dialog-content{
+    overflow-x: hidden
+}

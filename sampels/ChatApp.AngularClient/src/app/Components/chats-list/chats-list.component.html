@@ -1,0 +1,16 @@
+<mat-nav-list class="nvlist">
+  <mat-list-item *ngFor="let chat of chats" (click)="switchChat( chat.id)">
+    <span mat-list-avatar class="avatar ">
+      <img src="../../../assets/images/shiba2.jpg" alt="...">
+
+    </span>
+    <h3 mat-line> {{getChatName(chat)}}</h3>
+
+    <p mat-line>
+      <span>{{'chat last message'}}</span>
+    </p>
+
+  </mat-list-item>
+
+<div>last one</div>
+</mat-nav-list>

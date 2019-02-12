@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <span>{{chatLoadding =='loadded' && chat.name? chat.name :getChatName()}}</span>
+  <span class="spacer"></span>
+  <ng-content></ng-content>
+</mat-toolbar>
+
+<div class="message-list-container" #msgsList (scroll)="onScroll()">
+  <div class="message-list" >
+
+    <mat-spinner [strokeWidth]="5" *ngIf="chatLoadding==='loadding'"></mat-spinner>
+    <ul *ngIf="chat" >
+      <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div *cdkVirtualFor="let item of Chat.Messages" class="example-item">{{item}}</div>
+</cdk-virtual-scroll-viewport> -->
+      <li *ngFor="let msg of chat.messages">
+        <div class="message {{isMe(msg.fromUserId)?'from':'to'}}">
+          <p *ngFor="let m of msg.content.split('\n')">
+            <!-- {{msg.FromUserId}} - msgContent = {{msg.Content}} -->
+            {{m}}
+          </p>
+          <p class="date">{{printDate(msg.date)}}</p>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+
+<section *ngIf="chat" class="message-section">
+
+  <mat-form-field class="text-field">
+    <!-- <input matInput  [(ngModel)]="message" maxlength="256" placeholder="Message"> -->
+    <input matInput [(ngModel)]="message" (keyup)="messageChanged($event)" placeholder="Message"/>
+  </mat-form-field>
+  <span class="spacer"></span>
+  <button *ngIf="message.length > 0" mat-icon-button (click)="sendMessage()">
+    <mat-icon>send</mat-icon>
+  </button>
+  <button *ngIf="message.length == 0" mat-icon-button (click)="OnRecorde()">
+    <mat-icon>mic</mat-icon>
+  </button>
+
+</section>

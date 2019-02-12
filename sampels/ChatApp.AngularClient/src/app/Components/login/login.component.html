@@ -1,0 +1,100 @@
+
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Login
+    </ng-template>
+    <form class="form-container" [formGroup]='loginFormGroup' (ngSubmit)="login()">
+
+      <mat-form-field>
+        <input matInput required placeholder="User Name" 
+            name="userName"
+            formControlName='userName' />
+        <mat-error *ngIf="loginFormGroup.get('userName').hasError('required')">
+         User Name is <strong>required</strong>
+        </mat-error>
+        
+        <mat-error *ngIf="loginFormGroup.get('userName').hasError('minlength') || loginFormGroup.get('userName').hasError('maxlength')">
+        The User name must be between 5-50 characters long.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput required placeholder="password"
+            name="password"
+            formControlName='password'
+            [type]="hidePassword ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      
+        <mat-error *ngIf="loginFormGroup.get('password').hasError('required')">
+           password is <strong>required</strong>
+        </mat-error> 
+         <mat-error *ngIf="loginFormGroup.get('password').hasError('minlength')">
+            Password must be <strong>at least </strong> 6 characters long. 
+        </mat-error> 
+    </mat-form-field>
+      
+      <mat-checkbox name="rememberMe" formControlName='rememberMe' >Remember me?</mat-checkbox>
+      <button mat-button type="submit" [disabled]="loginFormGroup.invalid || isLoadding">Login</button>
+    </form>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Register
+    </ng-template>
+    <form class="form-container"  [formGroup]='registerFormGroup' (ngSubmit)="register()">
+
+      <mat-form-field>
+        <input matInput required placeholder="User Name" 
+            name="userName"
+            formControlName='userName' />
+        
+        <mat-error *ngIf="registerFormGroup.get('userName').hasError('required')">
+         User Name is <strong>required</strong>
+        </mat-error>
+        
+        <mat-error *ngIf="registerFormGroup.get('userName').hasError('minlength') || loginFormGroup.get('userName').hasError('maxlength')">
+        The User name must be between 5-50 characters long.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput required placeholder="Email"  formControlName='email'>
+            <mat-error *ngIf="registerFormGroup.get('email').hasError('email') ">
+            Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="registerFormGroup.get('email').hasError('required')">
+            Email is <strong>required</strong>
+            </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput required placeholder="password" formControlName='password' [type]="hidePassword ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    
+        <mat-error *ngIf="registerFormGroup.get('password').hasError('required')">
+           password is <strong>required</strong>
+        </mat-error> 
+         <mat-error *ngIf="registerFormGroup.get('password').hasError('minlength')">
+            Password must be <strong>at least </strong> 6 characters long. 
+        </mat-error> 
+    </mat-form-field>
+      <mat-form-field>
+        <input matInput required placeholder="Confirm password"  formControlName='confirmPassword' [type]="hideConfirm ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+       
+        <mat-error *ngIf="registerFormGroup.get('confirmPassword').hasError('pattern')">
+            Confirm password is <strong>Not </strong>match the password
+        </mat-error> 
+        <mat-error *ngIf="registerFormGroup.get('confirmPassword').hasError('required')">
+            Confirm password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="registerFormGroup.get('confirmPassword').hasError('minlength')">
+           Password must be <strong>at least </strong> 6 characters long. 
+       </mat-error>
+    </mat-form-field>
+      <mat-checkbox   formControlName='rememberMe'>Remember me?</mat-checkbox>
+      <button mat-button type="submit" [disabled]="registerFormGroup.invalid || isLoadding">Register</button>
+    </form>
+  </mat-tab>
+</mat-tab-group>
+<mat-spinner [strokeWidth]="5" *ngIf="isLoadding"></mat-spinner>

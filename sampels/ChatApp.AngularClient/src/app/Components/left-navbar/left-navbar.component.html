@@ -1,0 +1,4 @@
+
+<app-left-main (profileOpened)="toggleProfile()" class="left-main"></app-left-main>
+<app-left-profile (profileClosed)="toggleProfile()" class="left-main left-profile" *ngIf="isProfileOpened" ></app-left-profile>
+<!-- [@toggleProfile]='profileAnimationState' -->

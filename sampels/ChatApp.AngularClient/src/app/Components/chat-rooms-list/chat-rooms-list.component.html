@@ -1,0 +1,25 @@
+
+<ng-content>
+</ng-content>
+
+<mat-form-field >
+  <mat-label>Search
+  <mat-icon matSuffix>search</mat-icon>
+  </mat-label>
+  <input (input)="search($event)" matInput placeholder="Search">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+<mat-list>
+<mat-list-item>
+    <span mat-list-avatar class="avatar">
+        <img  src="../../../assets/images/shiba2.jpg" alt="...">
+
+    </span>
+        <h3 mat-line> contact.UserName</h3>
+
+        <p mat-line>
+          <span>contact.StatusMessage</span>
+        </p> 
+        <button mat-icon-button  (click)="joinChatRoom('id')"><mat-icon >person_add</mat-icon></button>
+</mat-list-item>
+</mat-list>

@@ -1,0 +1,51 @@
+  <mat-toolbar>
+    <span>Settings </span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="CloseProfile()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <mat-tab-group class="contacts-list">
+    <mat-tab label="Contacts">
+      <div class="contacts-tab-header">
+        <!-- <mat-form-field>
+        </mat-form-field> -->
+          <mat-select placeholder="filter"  matTooltip="Filter"
+          [(ngModel)]="selectedFilterValue" name="filter">
+            <mat-option value="All">
+              All
+            </mat-option>
+  
+            <mat-option value="Online">
+              Online
+            </mat-option>
+  
+            <mat-option value="Busy">
+              Busy
+            </mat-option>
+  
+            <mat-option value="Away">
+              Away
+            </mat-option>
+  
+            <mat-option value="Offline">
+              Offline
+            </mat-option>
+  
+          </mat-select>
+  
+  
+        <span class="spacer"></span>
+        <button mat-button>Add Contacts </button>
+      </div>
+    </mat-tab>
+    <mat-tab >
+        <ng-template mat-tab-label>
+      <mat-icon>forum</mat-icon>Chats
+            
+          </ng-template>
+      Chats tabbody
+    </mat-tab>
+  </mat-tab-group>
+

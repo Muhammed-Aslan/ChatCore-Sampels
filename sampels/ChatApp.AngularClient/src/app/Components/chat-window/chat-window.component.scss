@@ -1,0 +1,103 @@
+.message-section{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px;
+    background-color: #eee;
+}
+.text-field{
+    width: 100%;
+}
+button{
+    margin: 10px;
+    margin-top: 25px;
+}
+
+.message-list-container{
+    display: flex;
+    height: calc(100% - 167px);
+    overflow: scroll;
+}
+mat-spinner{
+    margin: 20px auto;
+}
+.message-list{
+    width: 100%;
+    padding: 20px;
+    ul{
+        list-style: none;
+        width: 100%;
+        padding: 0;
+        li{
+            width:100%;
+            display: inline-block;
+        }
+    }
+}
+.message{  
+    width: 95%; 
+    position: relative;
+    border-radius: 5px;
+    margin: 0px;
+    padding: 0.1px 10px;
+    margin-bottom: 10px;
+    max-width: 350px;
+}
+$from_color : #a7e884;
+$to_color : #c8d7ff;
+.date{
+    position: absolute;
+    bottom: 0;
+    margin: 2px;
+    font-size: .8em;
+}
+.from{
+    background-color:$from_color;
+    text-align: left;
+    :before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-width: 0;
+        border-right-color:$from_color;
+        border-left: 0;
+        margin-top: -10px;
+        margin-left: -10px;
+        z-index: -1;
+    } 
+    .date{
+        right: 0;
+    }
+}
+.to{
+    background-color: $to_color;
+    text-align: right;
+    float: right;
+    clear: both;
+    :before {
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: 10px;
+        width: 0;
+        height: 0;        
+        border: 20px solid transparent;
+        border-top-color: $to_color;
+        border-left: 0;
+        margin-top: -10px;
+        margin-right: -5px;
+        z-index: -1;
+    } 
+    
+    .date{
+        left: 0;
+    }
+}
+

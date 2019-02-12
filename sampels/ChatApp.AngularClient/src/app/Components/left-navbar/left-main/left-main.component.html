@@ -1,0 +1,118 @@
+<mat-toolbar>
+<span class="avatar-wrapper">
+  <button class="avatar " mat-icon-button (click)="toggleProfile()">
+    <img src="/assets/images/shiba2.jpg" alt="...">
+  </button>
+  <span class="status-btn {{currentUserStatus}}" mat-icon-button matTooltip="{{currentUserStatus}}" [mat-menu-trigger-for]="statusMenu">
+  </span>
+  <mat-menu #statusMenu>
+    <button mat-menu-item (click)="changeStatus(3)">
+      <span class="status-menu-btn Online"></span> Online
+    </button>
+    <button mat-menu-item (click)="changeStatus(1)">
+      <span class="status-menu-btn Busy"></span> Busy
+    </button>
+    <button mat-menu-item (click)="changeStatus(0)">
+      <span class="status-menu-btn Away"></span> Away
+    </button>
+    <button mat-menu-item (click)="changeStatus(2)">
+      <span class="status-menu-btn Offline"></span> Offline
+    </button>
+    </mat-menu>
+</span>
+  <span class="currentUser">
+    <span class="userName">{{currentUser.userName}}</span>
+    <p class="statusMessage">{{currentUser.statusMessage ?currentUser.statusMessage:"..."}} </p>
+  </span>
+  <span class="spacer"></span>
+  <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <mat-icon matTooltip="Settings">settings</mat-icon>
+  </button>
+  <mat-menu #menu>
+    <button mat-menu-item (click)="logout()" >
+      <mat-icon>lock</mat-icon> LogOut
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-tab-group class="contacts-list">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon matTooltip="Contacts">group</mat-icon>
+    </ng-template>
+    <div class="contacts-tab-header">
+
+      <mat-select placeholder="filter" matTooltip="Filter" [(ngModel)]="selectedFilterValue" name="filter">
+        <mat-option value="All">
+          All
+        </mat-option>
+
+        <mat-option value="Online">
+          Online
+        </mat-option>
+
+        <mat-option value="Busy">
+          Busy
+        </mat-option>
+
+        <mat-option value="Away">
+          Away
+        </mat-option>
+
+        <mat-option value="Offline">
+          Offline
+        </mat-option>
+
+      </mat-select>
+
+
+      <span class="spacer"></span>
+      <button matTooltip="Add Contacts" mat-icon-button (click)="openDialog()">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+    <app-contacts-list class="contacts-list"></app-contacts-list>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon matTooltip="Chats">message</mat-icon>
+    </ng-template>
+    
+    <div class="contacts-tab-header">
+
+      <mat-select placeholder="filter" matTooltip="Filter" [(ngModel)]="selectedFilterValue" name="filter">
+        <mat-option value="A-Z">
+          A-Z
+        </mat-option>
+
+        <mat-option value="Z-A">
+          Z-A
+        </mat-option>
+
+      </mat-select>
+      <span class="spacer"></span>
+      <button matTooltip="Create" mat-icon-button [mat-menu-trigger-for]="createChatMenu">
+        <mat-icon >add</mat-icon>
+      </button>
+      <mat-menu #createChatMenu>
+          <button mat-menu-item (click)="createChat('group')">
+              <mat-icon>group</mat-icon> Create Group 
+          </button>
+          <button mat-menu-item (click)="createChat('chatRoom')">
+              <mat-icon>forum</mat-icon> Create Chat Room 
+          </button>
+      </mat-menu>
+    </div>
+    <app-chats-list></app-chats-list>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon matTooltip="Chat Rooms">forum</mat-icon>
+    </ng-template>
+
+    <app-chat-rooms-list>
+      <div class="contacts-tab-header">
+        </div>
+      </app-chat-rooms-list>
+  </mat-tab>
+</mat-tab-group>

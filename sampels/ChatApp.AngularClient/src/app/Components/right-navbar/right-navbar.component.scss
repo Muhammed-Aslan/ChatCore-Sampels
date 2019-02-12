@@ -1,0 +1,26 @@
+.profile-container {
+    box-shadow: #888 0px 10px 30px -10px
+}
+p{
+    font-style: italic;
+    padding:5px;
+}
+.profile-header {
+
+}
+
+.image-container {
+
+  margin: 10px auto;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #eee;
+  box-shadow: #888 0px 0px 20px 0px;
+  img{
+  width: 200px;
+  }
+}

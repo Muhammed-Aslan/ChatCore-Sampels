@@ -1,0 +1,34 @@
+<mat-drawer-container class="absolute" *ngIf="isLoggedIn">
+
+<!-- #region Left Side -->
+<mat-drawer mode="side" class="left-side" [opened]="leftNavOpend">
+
+<app-left-navbar></app-left-navbar>
+
+</mat-drawer>
+<!-- #endregion -->
+ 
+<!-- #region Medile Side -->
+  <mat-drawer-content>
+        <app-chat-window class="absolute">
+            <button mat-button (click)="toggleLeft()">Toggle Left</button>
+            <button mat-icon-button *ngIf="profileEnable" [mat-menu-trigger-for]="menu">
+              <mat-icon matTooltip="Settings">3d_rotation</mat-icon>
+            </button>
+            <mat-menu #menu>              
+            <button mat-button (click)="toggleRight()">Profile</button>
+            </mat-menu>
+        </app-chat-window>
+  </mat-drawer-content>
+<!-- #endregion -->
+
+<!-- #region Right Side -->
+  <mat-drawer class="right-side " mode="side" position="end" [opened]="rightNavOpend">
+    <app-right-navbar  class="absolute"  (closed)="toggleRight()" (available)="enableProfile($event)">
+
+    </app-right-navbar>
+  </mat-drawer>
+<!-- #endregion -->
+
+</mat-drawer-container>
+<app-login *ngIf="!isLoggedIn"></app-login>

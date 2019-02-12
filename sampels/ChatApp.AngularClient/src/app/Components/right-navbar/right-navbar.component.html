@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <span class="currentUser">
+      <span class="userName">{{chatName}}</span>
+    </span>
+    <span class="spacer"></span>
+
+    <button mat-icon-button (click)="close()">
+      <mat-icon matTooltip="Close">close</mat-icon>
+    </button>
+</mat-toolbar>
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="image-container">
+      <img src="{{image}}" alt="profile Image">
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, accusantium.</p>
+  </div>
+  <div class="delete">
+    <span *ngIf="deleteBtnTxt == 'Delete'">
+      Remove this friend
+    </span>
+    <span class=" spacer"></span>
+    <span>
+      <button mat-button color="warn" (click)="deleteUser()">Delete</button>
+    </span>
+  </div>
+</div>
+  
